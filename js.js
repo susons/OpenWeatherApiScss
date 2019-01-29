@@ -251,31 +251,51 @@ function  getHourTemperature(result, dayCycle, b){
   var time = document.getElementsByClassName("time_container");
   if (dayCycle == 0) {
     for (i = 0; i < temperature.length; i++) {
-      var temperatureAmount = Math.round(result.list[b].main.temp);
-      temperature[i].innerHTML = temperatureAmount + "&#x2103;";
-      time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
-      b=b+2;
+      if (result.list[b] === undefined || result.list[b] === null) {
+        temperature[i].innerHTML = "Unknown &#x2103;";
+        b=b+2;
+      } else {
+        var temperatureAmount = Math.round(result.list[b].main.temp);
+        temperature[i].innerHTML = temperatureAmount + "&#x2103;";
+        time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
+        b=b+2;
+      }
     };
   } else if (dayCycle == 1) {
     for (i = 0; i < temperature.length; i++) {
-      var temperatureAmount = Math.round(result.list[b].main.temp);
-      temperature[i].innerHTML = temperatureAmount + "&#x2103;";
-      time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
-      b=b+2;
+      if (result.list[b] === undefined || result.list[b] === null) {
+        temperature[i].innerHTML = "Unknown &#x2103;";
+        b=b+2;
+      } else {
+        var temperatureAmount = Math.round(result.list[b].main.temp);
+        temperature[i].innerHTML = temperatureAmount + "&#x2103;";
+        time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
+        b=b+2;
+      }
     };
   } else if (dayCycle == 2) {
-    for (i = 1; i < temperature.length; i++) {
-      var temperatureAmount = Math.round(result.list[b].main.temp);
-      temperature[i].innerHTML = temperatureAmount + "&#x2103;";
-      time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
+    if (result.list[b] === undefined || result.list[b] === null) {
+      temperature[i].innerHTML = "Unknown &#x2103;";
       b=b+2;
+    } else {
+      for (i = 1; i < temperature.length; i++) {
+        var temperatureAmount = Math.round(result.list[b].main.temp);
+        temperature[i].innerHTML = temperatureAmount + "&#x2103;";
+        time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
+        b=b+2;
+      }
     };
   } else {
     for (i = 2; i < temperature.length; i++) {
+      if (result.list[b] === undefined || result.list[b] === null) {
+        temperature[i].innerHTML = "Unknown &#x2103;";
+        b=b+2;
+      } else {
       var temperatureAmount = Math.round(result.list[b].main.temp);
       temperature[i].innerHTML = temperatureAmount + "&#x2103;";
       time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
       b=b+2;
+      }
     };
   }
 }
