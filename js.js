@@ -134,7 +134,6 @@ function init(result) {
 // })
 
 function putTemperatureUp(result) {
-  console.log(result);
   var b = 0;
   var dayCycle;
   var firstDateValue = result.list[b].dt_txt;
@@ -207,9 +206,9 @@ function getDaysTemperature(result, dayCycle, b) {
     };
   } else if (dayCycle == 2) {
     for (i = 0; i < weather_div.length; i++) {
-      if (i == 1) {
+      if (i == 0) {
         weather_div[i].children[0].innerHTML =  "Unknown	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour = day_hour+2].main.temp) + " &#x2103;" + "</span>";
-        weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + ((result.list[day_hour-4].main.humidity+result.list[day_hour].main.humidity)/2) + ' %';
+        weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + (result.list[day_hour].main.humidity) + ' %';
         day_hour = day_hour + 4;
       } else {
         weather_div[i].children[0].innerHTML = Math.round(result.list[day_hour].main.temp) + "	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour = day_hour+4].main.temp) + " &#x2103;" + "</span>";
@@ -219,7 +218,7 @@ function getDaysTemperature(result, dayCycle, b) {
     };
   } else {
     for (i = 0; i < weather_div.length; i++) {
-      if (i == 1) {
+      if (i == 0) {
         weather_div[i].children[0].innerHTML =  "Unknown	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour].main.temp) + " &#x2103;" + "</span>";
         weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + ((result.list[day_hour-4].main.humidity+result.list[day_hour].main.humidity)/2) + ' %';
         day_hour = day_hour + 4;
@@ -291,10 +290,10 @@ function  getHourTemperature(result, dayCycle, b){
         temperature[i].innerHTML = "Unknown &#x2103;";
         b=b+2;
       } else {
-      var temperatureAmount = Math.round(result.list[b].main.temp);
-      temperature[i].innerHTML = temperatureAmount + "&#x2103;";
-      time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
-      b=b+2;
+        var temperatureAmount = Math.round(result.list[b].main.temp);
+        temperature[i].innerHTML = temperatureAmount + "&#x2103;";
+        time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
+        b=b+2;
       }
     };
   }
