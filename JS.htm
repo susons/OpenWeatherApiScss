@@ -2,7 +2,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SusonS</title>
-    <link rel="stylesheet" type="text/css" href="scss_to_css.css">
+    <link rel="stylesheet" type="text/css" href="js.css">
     <link href="js.js">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
@@ -25,8 +25,11 @@
             <span></span>
           </div>
           <div class="weather_container">
-            <span></span>
-            <span></span>
+            <div>
+              <span class="weather_info"></span><span class="slash"> / </span>
+              <span class="weather_info night_temp"></span>
+            </div>
+            <div class="average_humidity"></div>
             <span class="triangle"></span>
           </div>
         </div>
@@ -48,8 +51,11 @@
             <span></span>
           </div>
           <div class="weather_container">
-            <span></span>
-            <span></span>
+            <div>
+              <span class="weather_info"></span><span> / </span>
+              <span class="weather_info night_temp"></span>
+            </div>
+            <div class="average_humidity"></div>
           </div>
         </div>
       </button>
@@ -70,67 +76,76 @@
             <span></span>
           </div>
           <div class="weather_container">
-            <span></span>
-            <span></span>
+            <div>
+              <span class="weather_info"></span><span> / </span>
+              <span class="weather_info night_temp"></span>
+            </div>
+            <div class="average_humidity"></div>
           </div>
         </div>
       </button>
-        <div class="collapse_container">
-            <div class="temperature_container"></div>
-            <div class="temperature_container"></div>
-            <div class="temperature_container"></div>
-            <div class="temperature_container"></div>
-            <div class="time_container">6:00</div>
-            <div class="time_container">12:00</div>
-            <div class="time_container">18:00</div>
-            <div class="time_container">00:00</div>
-        </div>
-        <div class="colapsed_weather_container"></div>
-        <button class="collapsible weather_row_button">
-          <div class="weather_row_container">
-            <div class="day_container">
-              <span></span>
-            </div>
-            <div class="weather_container">
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-        </button>
-          <div class="collapse_container">
-              <div class="temperature_container"></div>
-              <div class="temperature_container"></div>
-              <div class="temperature_container"></div>
-              <div class="temperature_container"></div>
-              <div class="time_container">6:00</div>
-              <div class="time_container">12:00</div>
-              <div class="time_container">18:00</div>
-              <div class="time_container">00:00</div>
-          </div>
-          <div class="colapsed_weather_container"></div>
-          <button class="collapsible weather_row_button">
-            <div class="weather_row_container">
-              <div class="day_container">
-                <span></span>
-              </div>
-              <div class="weather_container">
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-          </button>
-          <div class="collapse_container">
-              <div class="temperature_container"></div>
-              <div class="temperature_container"></div>
-              <div class="temperature_container"></div>
-              <div class="temperature_container"></div>
-              <div class="time_container">6:00</div>
-              <div class="time_container">12:00</div>
-              <div class="time_container">18:00</div>
-              <div class="time_container">00:00</div>
-          </div>
+      <div class="collapse_container">
+        <div class="temperature_container"></div>
+        <div class="temperature_container"></div>
+        <div class="temperature_container"></div>
+        <div class="temperature_container"></div>
+        <div class="time_container">6:00</div>
+        <div class="time_container">12:00</div>
+        <div class="time_container">18:00</div>
+        <div class="time_container">00:00</div>
       </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-      <script src="js.js"></script>
+      <div class="colapsed_weather_container"></div>
+      <button class="collapsible weather_row_button">
+        <div class="weather_row_container">
+          <div class="day_container">
+            <span></span>
+          </div>
+          <div class="weather_container">
+            <div>
+              <span class="weather_info"></span><span> / </span>
+              <span class="weather_info night_temp"></span>
+            </div>
+            <div class="average_humidity"></div>
+          </div>
+        </div>
+      </button>
+      <div class="collapse_container">
+        <div class="temperature_container"></div>
+        <div class="temperature_container"></div>
+        <div class="temperature_container"></div>
+        <div class="temperature_container"></div>
+        <div class="time_container">6:00</div>
+        <div class="time_container">12:00</div>
+        <div class="time_container">18:00</div>
+        <div class="time_container">00:00</div>
+      </div>
+      <div class="colapsed_weather_container"></div>
+      <button class="collapsible weather_row_button">
+        <div class="weather_row_container">
+          <div class="day_container">
+            <span></span>
+          </div>
+          <div class="weather_container">
+            <div>
+              <span class="weather_info"></span><span> / </span>
+              <span class="weather_info night_temp"></span>
+            </div>
+            <div class="average_humidity"></div>
+          </div>
+        </div>
+      </button>
+      <div class="collapse_container">
+        <div class="temperature_container"></div>
+        <div class="temperature_container"></div>
+        <div class="temperature_container"></div>
+        <div class="temperature_container"></div>
+        <div class="time_container">6:00</div>
+        <div class="time_container">12:00</div>
+        <div class="time_container">18:00</div>
+        <div class="time_container">00:00</div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="js.js"></script>
   </body>
 </html>

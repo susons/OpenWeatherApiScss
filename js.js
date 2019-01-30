@@ -82,7 +82,7 @@ function searchWeather() {
 }
 
 function init(result) {
-  // console.log(result);
+  console.log(result);
   // switch (result.list[0].weather[0].main) {
   //   case 'Clear':
   //     document.body.style.backgroundImage = 'url("clear.jpg")';
@@ -140,95 +140,101 @@ function putTemperatureUp(result) {
   var firstDayConverted = new Date(firstDateValue.replace(/-/g,"/"));
   switch (firstDayConverted.getHours()) {
     case 21:
-      dayCycle = 0;
+      dayCycle = 1;
       b = 1;
       break;
     case 18:
-      dayCycle = 3;
+      dayCycle = 4;
       b = 0;
       break;
     case 15:
-      dayCycle = 3;
+      dayCycle = 4;
       b = 1
       break;
     case 12:
-      dayCycle = 2;
+      dayCycle = 3;
       b = 0;
       break;
     case 9:
-      dayCycle = 2;
+      dayCycle = 3;
       b = 1;
       break;
     case 6:
-      dayCycle = 1;
+      dayCycle = 2;
       b = 0;
       break;
     case 3:
-      dayCycle = 1;
+      dayCycle = 2;
       b = 1;
       break;
     case 0:
-      dayCycle = 0;
+      dayCycle = 1;
       b = 0;
       break;
   }
   getWeekDay(result, b);
   getHourTemperature(result, dayCycle, b);
   getDaysTemperature(result, dayCycle, b);
+  getDaysAverageHumidity(result, dayCycle, b)
 }
 
 function getDaysTemperature(result, dayCycle, b) {
-  var weather_div = document.getElementsByClassName("weather_container");
+  var weather_div = document.getElementsByClassName("weather_info");
   var day_hour = b;
-  if (dayCycle == 0) {
-    for (i = 0; i < weather_div.length; i++) {
-      if (i == 0) {
-        weather_div[i].children[0].innerHTML = Math.round(result.list[day_hour = day_hour+2].main.temp) + "	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour = day_hour+4].main.temp) + " &#x2103;" + "</span>";
-        weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + ((result.list[day_hour-4].main.humidity+result.list[day_hour].main.humidity)/2) + ' %';
-        day_hour = day_hour + 4;
-      } else {
-        weather_div[i].children[0].innerHTML = Math.round(result.list[day_hour].main.temp) + "	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour = day_hour+4].main.temp) + " &#x2103;" + "</span>";
-        weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + ((result.list[day_hour-4].main.humidity+result.list[day_hour].main.humidity)/2) + ' %';
-        day_hour = day_hour + 4;
-      }
-    };
-  } else if (dayCycle == 1) {
-    for (i = 0; i < weather_div.length; i++) {
-      if (i == 0) {
-        weather_div[i].children[0].innerHTML = Math.round(result.list[day_hour].main.temp) + "	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour = day_hour+4].main.temp) + " &#x2103;" + "</span>";
-        weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + ((result.list[day_hour-4].main.humidity+result.list[day_hour].main.humidity)/2) + ' %';
-        day_hour = day_hour + 4;
-      } else {
-        weather_div[i].children[0].innerHTML = Math.round(result.list[day_hour].main.temp) + "	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour = day_hour+4].main.temp) + " &#x2103;" + "</span>";
-        weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + ((result.list[day_hour-4].main.humidity+result.list[day_hour].main.humidity)/2) + ' %';
-        day_hour = day_hour + 4;
-      }
-    };
-  } else if (dayCycle == 2) {
-    for (i = 0; i < weather_div.length; i++) {
-      if (i == 0) {
-        weather_div[i].children[0].innerHTML =  "Unknown	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour = day_hour+2].main.temp) + " &#x2103;" + "</span>";
-        weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + (result.list[day_hour].main.humidity) + ' %';
-        day_hour = day_hour + 4;
-      } else {
-        weather_div[i].children[0].innerHTML = Math.round(result.list[day_hour].main.temp) + "	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour = day_hour+4].main.temp) + " &#x2103;" + "</span>";
-        weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + ((result.list[day_hour-4].main.humidity+result.list[day_hour].main.humidity)/2) + ' %';
-        day_hour = day_hour + 4;
-      }
-    };
+  day_hour = (day_hour % 2 ? b + 2 : b);
+
+  var skip_1st;
+
+  if (dayCycle == 3) {
+    skip_1st = true;
+  } else if (dayCycle == 4) {
+    skip_1st = true;
   } else {
-    for (i = 0; i < weather_div.length; i++) {
-      if (i == 0) {
-        weather_div[i].children[0].innerHTML =  "Unknown	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour].main.temp) + " &#x2103;" + "</span>";
-        weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + ((result.list[day_hour-4].main.humidity+result.list[day_hour].main.humidity)/2) + ' %';
-        day_hour = day_hour + 4;
-      } else {
-        weather_div[i].children[1].innerHTML = 'Avg.Humidity ' + ((result.list[day_hour-4].main.humidity+result.list[day_hour].main.humidity)/2) + ' %';
-        weather_div[i].children[0].innerHTML = Math.round(result.list[day_hour].main.temp) + "	&#x2103; / " + "<span style='color:#c7cef5;font-weight:500;'>" + Math.round(result.list[day_hour = day_hour+4].main.temp) + " &#x2103;" + "</span>";
-        day_hour = day_hour + 4;
-      }
-    };
+    skip_1st = false;
   }
+
+  for (i = 0; i < weather_div.length; i++) {
+    if (result.list[day_hour] === undefined || result.list[day_hour] === null) {
+      weather_div[i].innerHTML = "Unknown &#x2103;";
+      day_hour += 4;
+    } else if (skip_1st == true) {
+      weather_div[i].innerHTML = "Unknown &#x2103;";
+      day_hour += 4;
+      skip_1st = false;
+    } else {
+      weather_div[i].innerHTML = Math.round(result.list[day_hour].main.temp) + "	&#x2103;";
+      day_hour += 4;
+    }
+  };
+}
+
+function getDaysAverageHumidity(result, dayCycle, b) {
+  var averageHumidity = document.getElementsByClassName("average_humidity");
+  var day_hour = b;
+  day_hour = (day_hour % 2 ? b + 2 : b);
+  var skip_1st;
+
+  if (dayCycle == 3) {
+    skip_1st = true;
+  } else if (dayCycle == 4) {
+    skip_1st = true;
+  } else {
+    skip_1st = false;
+  }
+
+  for (i = 0; i < averageHumidity.length; i++) {
+    if (result.list[day_hour] === undefined || result.list[day_hour] === null) {
+      averageHumidity[i].innerHTML = "Unknown &#x2103;";
+      day_hour += 8;
+    } else if (skip_1st == true) {
+      averageHumidity[i].innerHTML = 'Avg.Humidity ' + (result.list[day_hour+4].main.humidity)/2 + ' %';
+      day_hour += 8;
+      skip_1st == false;
+    } else {
+      averageHumidity[i].innerHTML = 'Avg.Humidity ' + ((result.list[day_hour].main.humidity+result.list[day_hour+4].main.humidity)/2) + ' %';
+      day_hour += 8;
+    }
+  };
 }
 
 function getWeekDay(result, b) {
@@ -248,53 +254,25 @@ function getWeekDay(result, b) {
 function  getHourTemperature(result, dayCycle, b){
   var temperature = document.getElementsByClassName("temperature_container");
   var time = document.getElementsByClassName("time_container");
-  if (dayCycle == 0) {
-    for (i = 0; i < temperature.length; i++) {
-      if (result.list[b] === undefined || result.list[b] === null) {
-        temperature[i].innerHTML = "Unknown &#x2103;";
-        b=b+2;
-      } else {
-        var temperatureAmount = Math.round(result.list[b].main.temp);
-        temperature[i].innerHTML = temperatureAmount + "&#x2103;";
-        time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
-        b=b+2;
-      }
-    };
-  } else if (dayCycle == 1) {
-    for (i = 0; i < temperature.length; i++) {
-      if (result.list[b] === undefined || result.list[b] === null) {
-        temperature[i].innerHTML = "Unknown &#x2103;";
-        b=b+2;
-      } else {
-        var temperatureAmount = Math.round(result.list[b].main.temp);
-        temperature[i].innerHTML = temperatureAmount + "&#x2103;";
-        time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
-        b=b+2;
-      }
-    };
-  } else if (dayCycle == 2) {
-    for (i = 1; i < temperature.length; i++) {
-      if (result.list[b] === undefined || result.list[b] === null) {
-        temperature[i].innerHTML = "Unknown &#x2103;";
-        b=b+2;
-      } else {
-        var temperatureAmount = Math.round(result.list[b].main.temp);
-        temperature[i].innerHTML = temperatureAmount + "&#x2103;";
-        time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
-        b=b+2;
-      }
-    };
+  var i_index;
+
+  if (dayCycle == 3) {
+    i_index = 1;
+  } else if (dayCycle == 4) {
+    i_index = 2;
   } else {
-    for (i = 2; i < temperature.length; i++) {
-      if (result.list[b] === undefined || result.list[b] === null) {
-        temperature[i].innerHTML = "Unknown &#x2103;";
-        b=b+2;
-      } else {
-        var temperatureAmount = Math.round(result.list[b].main.temp);
-        temperature[i].innerHTML = temperatureAmount + "&#x2103;";
-        time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
-        b=b+2;
-      }
-    };
+    i_index = 0;
   }
+
+  for (i = i_index; i < temperature.length; i++) {
+    if (result.list[b] === undefined || result.list[b] === null) {
+      temperature[i].innerHTML = "Unknown &#x2103;";
+      b=b+2;
+    } else {
+      var temperatureAmount = Math.round(result.list[b].main.temp);
+      temperature[i].innerHTML = temperatureAmount + "&#x2103;";
+      time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
+      b=b+2;
+    }
+  };
 }

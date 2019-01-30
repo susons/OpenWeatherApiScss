@@ -125,18 +125,26 @@ border-radius: 5px;
   padding: 0 20px;
   text-align: left;
 }
-.weather_container span:first-child {
+.weather_container div:first-child {
   flex: 0 0 100%;
+}
+
+.weather_container div:nth-child(2) {
+  flex: 1 1 95%;
+  font-size: 12px;
+  color: #fff;
+  padding-top: 5px;
+}
+
+.weather_info, .slash {
   font-size: 20px;
   color: #fff;
   font-weight: bold;
 }
 
-.weather_container span:nth-child(2) {
-  flex: 1 1 95%;
-  font-size: 12px;
-  color: #fff;
-  padding-top: 5px;
+.night_temp {
+  color: #c7cef5;
+  font-weight: 500;
 }
 
 .collapse_container {
