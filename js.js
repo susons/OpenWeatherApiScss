@@ -180,9 +180,7 @@ function putTemperatureUp(result) {
 
 function getDaysTemperature(result, dayCycle, b) {
   var weather_div = document.getElementsByClassName("weather_info");
-  var day_hour = b;
-  day_hour = (day_hour % 2 ? b + 2 : b);
-
+  var day_hour = dayCycle % 2 ? b + 2 : b;
   var skip_1st;
 
   if (dayCycle == 3) {
@@ -210,8 +208,7 @@ function getDaysTemperature(result, dayCycle, b) {
 
 function getDaysAverageHumidity(result, dayCycle, b) {
   var averageHumidity = document.getElementsByClassName("average_humidity");
-  var day_hour = b;
-  day_hour = (day_hour % 2 ? b + 2 : b);
+  var day_hour = dayCycle % 2 ? b + 2 : b;
   var skip_1st;
 
   if (dayCycle == 3) {
