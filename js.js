@@ -274,11 +274,11 @@ function  getHourTemperature(result, dayCycle, b){
       }
     };
   } else if (dayCycle == 2) {
-    if (result.list[b] === undefined || result.list[b] === null) {
-      temperature[i].innerHTML = "Unknown &#x2103;";
-      b=b+2;
-    } else {
-      for (i = 1; i < temperature.length; i++) {
+    for (i = 1; i < temperature.length; i++) {
+      if (result.list[b] === undefined || result.list[b] === null) {
+        temperature[i].innerHTML = "Unknown &#x2103;";
+        b=b+2;
+      } else {
         var temperatureAmount = Math.round(result.list[b].main.temp);
         temperature[i].innerHTML = temperatureAmount + "&#x2103;";
         time[i].innerHTML = result.list[b].dt_txt.substr(11, 5);
