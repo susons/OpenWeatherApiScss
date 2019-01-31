@@ -224,7 +224,7 @@ function getDaysAverageHumidity(result, dayCycle, b) {
       averageHumidity[i].innerHTML = "Unknown &#x2103;";
       day_hour += 8;
     } else if (skip_1st == true) {
-      averageHumidity[i].innerHTML = 'Avg.Humidity ' + (result.list[day_hour+4].main.humidity)/2 + ' %';
+      averageHumidity[i].innerHTML = 'Avg.Humidity ' + (result.list[day_hour+4].main.humidity) + ' %';
       day_hour += 8;
       skip_1st == false;
     } else {
