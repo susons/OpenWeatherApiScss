@@ -253,10 +253,12 @@ function  getHourTemperature(result, dayCycle, b){
   var time = document.getElementsByClassName("time_container");
   var i_index;
 
-  if (dayCycle == 3) {
+  if (dayCycle == 2) {
     i_index = 1;
-  } else if (dayCycle == 4) {
+  } else if (dayCycle == 3) {
     i_index = 2;
+  } else if (dayCycle == 4) {
+    i_index = 3;
   } else {
     i_index = 0;
   }
