@@ -1,13 +1,7 @@
-function accessMyLocation() {
-  getLanAndLon();
-}
-
-function denyaccessMyLocation() {
-  getSearchMethod();
-}
-
-var coll = document.getElementsByClassName("collapsible");
-var i;
+const accessMyLocation = () => getLanAndLon();
+const denyaccessMyLocation = () => getSearchMethod();
+const coll = document.getElementsByClassName("collapsible");
+let i;
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
@@ -21,14 +15,14 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 
-let appid = '305c52d0eaccce7e7a99318bd893addd';
-let units = 'metric';
+const appid = '305c52d0eaccce7e7a99318bd893addd';
+const units = 'metric';
 let searchMethod = "";
 let searchMethod1 = "";
 let searchTerm = "";
 let searchTerm1 = "";
 
-function getSearchMethod(){
+const getSearchMethod = () => {
   document.getElementById('promptButton').style.display = 'none';
   document.getElementById('show_content').style.display = 'flex';
   searchMethod = 'q';
@@ -36,12 +30,12 @@ function getSearchMethod(){
   searchWeather();
 }
 
-function getLanAndLon(){
+const getLanAndLon = () => {
   document.getElementById('lds-roller').style.display = "inline-block";
   navigator.geolocation.getCurrentPosition(showPosition, showError);
 }
 
-function showPosition(position) {
+const showPosition = position => {
   document.getElementById('promptButton').style.display = 'none';
   document.getElementById('show_content').style.display = 'flex';
   searchTerm = position.coords.latitude;
@@ -52,7 +46,7 @@ function showPosition(position) {
   searchWeather();
 }
 
-function showError(error) {
+const showError = error => {
   var x = document.getElementById('errorCode');
   document.getElementById('lds-roller').style.display = "none";
   switch(error.code) {
@@ -71,7 +65,7 @@ function showError(error) {
   }
 }
 
-function searchWeather() {
+const searchWeather = () => {
   var searchContainer = document.getElementById('show_content');
   searchContainer.style.visibility = 'visible';
   fetch(`http://api.openweathermap.org/data/2.5/forecast?${searchMethod}=${searchTerm}${searchMethod1}${searchTerm1}&units=${units}&appid=${appid}`).then(result => {
@@ -81,63 +75,64 @@ function searchWeather() {
   })
 }
 
-function init(result) {
+const init = result => {
   console.log(result);
-  // switch (result.list[0].weather[0].main) {
-  //   case 'Clear':
-  //     document.body.style.backgroundImage = 'url("clear.jpg")';
-  //     document.body.style.backgroundSize = 'cover';
-  //     document.body.style.backgroundRepeat = 'no-repeat';
-  //     document.body.style.backgroundPosition = 'center center';
-  //     break;
+  switch (result.list[0].weather[0].main) {
+    case 'Clear':
+      document.body.style.backgroundImage = 'url("clear.jpg")';
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundPosition = 'center center';
+      break;
 
-  //   case 'Clouds':
-  //     document.body.style.backgroundImage = "url('clouds.jpg')";
-  //     document.body.style.backgroundSize = 'cover';
-  //     document.body.style.backgroundRepeat = 'no-repeat';
-  //     document.body.style.backgroundPosition = 'center center';
-  //     break;
+    case 'Clouds':
+      document.body.style.backgroundImage = "url('clouds.jpg')";
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundPosition = 'center center';
+      break;
 
-  //   case 'Rain':
-  //   case 'Drizzle':
-  //   case 'Mist':
-  //     document.body.style.backgroundImage = "url('rain.jpg')";
-  //     document.body.style.backgroundSize = 'cover';
-  //     document.body.style.backgroundRepeat = 'no-repeat';
-  //     document.body.style.backgroundPosition = 'center center';
-  //     break;
+    case 'Rain':
+    case 'Drizzle':
+    case 'Mist':
+      document.body.style.backgroundImage = "url('rain.jpg')";
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundPosition = 'center center';
+      break;
 
-  //   case 'Thunderstorm':
-  //     document.body.style.backgroundImage = "url('storm.jpg')";
-  //     document.body.style.backgroundSize = 'cover';
-  //     document.body.style.backgroundRepeat = 'no-repeat';
-  //     document.body.style.backgroundPosition = 'center center';
-  //     break;
+    case 'Thunderstorm':
+      document.body.style.backgroundImage = "url('storm.jpg')";
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundPosition = 'center center';
+      break;
 
-  //   case 'Snow':
-  //     document.body.style.backgroundImage = "url('snow.jpg')";
-  //     document.body.style.backgroundSize = 'cover';
-  //     document.body.style.backgroundRepeat = 'no-repeat';
-  //     document.body.style.backgroundPosition = 'center center';
-  //     break;
+    case 'Snow':
+      document.body.style.backgroundImage = "url('snow.jpg')";
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundRepeat = 'no-repeat';
+      document.body.style.backgroundPosition = 'center center';
+      break;
 
-  //   default:
-  //     break;
-  // }
+    default:
+      break;
+  }
   putTemperatureUp(result);
 }
 
+// part of code that is used if you want to acces place with search method
 // document.getElementById('searchBtn').addEventListener('click',() => {
 //   let searchTerm = document.getElementById('searchInput').value;
 //   if(searchTerm)
 //     searchWeather(searchTerm);
 // })
 
-function putTemperatureUp(result) {
-  var b = 0;
-  var dayCycle;
-  var firstDateValue = result.list[b].dt_txt;
-  var firstDayConverted = new Date(firstDateValue.replace(/-/g,"/"));
+const putTemperatureUp = result => {
+  let b = 0;
+  let dayCycle;
+  let firstDateValue = result.list[b].dt_txt;
+  let firstDayConverted = new Date(firstDateValue.replace(/-/g,"/"));
   switch (firstDayConverted.getHours()) {
     case 21:
       dayCycle = 1;
@@ -178,7 +173,7 @@ function putTemperatureUp(result) {
   getDaysAverageHumidity(result, dayCycle, b)
 }
 
-function getDaysTemperature(result, dayCycle, b) {
+const getDaysTemperature = (result, dayCycle, b) => {
   var weather_div = document.getElementsByClassName("weather_info");
   var day_hour = dayCycle % 2 ? b + 2 : b;
   var skip_1st;
@@ -206,7 +201,7 @@ function getDaysTemperature(result, dayCycle, b) {
   };
 }
 
-function getDaysAverageHumidity(result, dayCycle, b) {
+const getDaysAverageHumidity = (result, dayCycle, b) => {
   var averageHumidity = document.getElementsByClassName("average_humidity");
   var day_hour = dayCycle % 2 ? b + 2 : b;
   var skip_1st;
@@ -234,7 +229,7 @@ function getDaysAverageHumidity(result, dayCycle, b) {
   };
 }
 
-function getWeekDay(result, b) {
+const getWeekDay = (result, b) => {
   var dayNames = document.getElementsByClassName("day_container");
   var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   for (i = 0; i < dayNames.length; i++) {
@@ -248,7 +243,7 @@ function getWeekDay(result, b) {
   };
 }
 
-function  getHourTemperature(result, dayCycle, b){
+const getHourTemperature = (result, dayCycle, b) => {
   var temperature = document.getElementsByClassName("temperature_container");
   var time = document.getElementsByClassName("time_container");
   var i_index;
