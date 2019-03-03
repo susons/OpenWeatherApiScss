@@ -1,7 +1,7 @@
 /* navbar for all pages */
 body {margin: 0;}
 * {box-sizing: border-box;}
-#menuToggle, #toggle {display: none;}
+#menuToggle, #toggle, .menu {display: none;}
 html {
   overflow: scroll;
   overflow-x: hidden;
@@ -185,11 +185,12 @@ ul {
   list-style-image: url('../assets//cat-solid.svg');
 }
 
-@media only screen and (max-width: 1200px) {
-
+@media only screen and (min-width: 993px) {
+  #menuToggle, #toggle, .menu {display: none;}
 }
 
 @media only screen and (max-width: 992px) {
+  #menuToggle, #toggle, .menu {display: none;}
   .left {
     display: none;
   }
@@ -216,9 +217,6 @@ ul {
   }
   #menuToggle {
     display: flex;
-  }
-  .menu {
-    display: none;
   }
   #toggle:checked + .menu {
     display: flex;
