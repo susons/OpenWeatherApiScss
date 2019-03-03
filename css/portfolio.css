@@ -73,20 +73,20 @@ html {
 }
 
 #menuToggle {
+  display: flex;
   flex: 0 0 100%;
   flex-wrap: wrap;
   font-size: 30px;
   user-select: none;
   z-index: 999;
+  justify-content: flex-end;
 }
 
-#menuToggle label {
+#menuToggle label{
   display: flex;
-  flex: 0 0 100%;
-  justify-content: flex-end;
-  margin: 10px;
+  flex: 0 0 5%;
+  margin: 10px 0 10px 0;
   cursor: pointer;
-  align-content: flex-end;
 }
 #menuToggle i {
   margin-right: 30px; 
@@ -150,6 +150,7 @@ html {
 
 .interests img{
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.7) -1px -1px 5px;
 }
 
 .title {
