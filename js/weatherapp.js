@@ -1,6 +1,6 @@
 const accessMyLocation = () => getLanAndLon();
 const denyaccessMyLocation = () => getSearchMethod();
-const coll = document.getElementsByClassName("collapsible");
+const coll = document.querySelectorAll(".collapsible");
 let i;
 
 for (i = 0; i < coll.length; i++) {
@@ -174,7 +174,7 @@ const putTemperatureUp = result => {
 }
 
 const getDaysTemperature = (result, dayCycle, b) => {
-  var weather_div = document.getElementsByClassName("weather_info");
+  var weather_div = document.querySelectorAll(".weather_info");
   var day_hour = dayCycle % 2 ? b + 2 : b;
   var skip_1st;
 
@@ -202,7 +202,7 @@ const getDaysTemperature = (result, dayCycle, b) => {
 }
 
 const getDaysAverageHumidity = (result, dayCycle, b) => {
-  var averageHumidity = document.getElementsByClassName("average_humidity");
+  var averageHumidity = document.querySelectorAll(".average_humidity");
   var day_hour = dayCycle % 2 ? b + 2 : b;
   var skip_1st;
 
@@ -230,7 +230,7 @@ const getDaysAverageHumidity = (result, dayCycle, b) => {
 }
 
 const getWeekDay = (result, b) => {
-  var dayNames = document.getElementsByClassName("day_container");
+  var dayNames = document.querySelectorAll(".day_container");
   var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   for (i = 0; i < dayNames.length; i++) {
     var date_value = result.list[b].dt_txt;
@@ -244,8 +244,8 @@ const getWeekDay = (result, b) => {
 }
 
 const getHourTemperature = (result, dayCycle, b) => {
-  var temperature = document.getElementsByClassName("temperature_container");
-  var time = document.getElementsByClassName("time_container");
+  var temperature = document.querySelectorAll(".temperature_container");
+  var time = document.querySelectorAll(".time_container");
   var i_index;
 
   if (dayCycle == 2) {

@@ -8,14 +8,14 @@
     <link rel="stylesheet" type="text/css" href="css/carousel.css">
     <link rel="stylesheet" type="text/css" href="css/portfolio.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Sniglet&amp;subset=latin-ext" rel="stylesheet">
   </head>
   <style>
   button {
     display: inline-block;
   }
   </style>
-  <body>
+  <body class="invitee_body">
     <div class="navbar_container">
       <div id="menuToggle">
         <label for="toggle"><i class="fas fa-bars"></i></label>
@@ -37,24 +37,26 @@
         <a class="link" href="goldenRatio.html">Standard page</a>
       </div>
       <div class="nav_item">
-        <a class="link" href="checkbox.html">Checkbox</a>      </div>
-    </div>
-    <div style="margin:100px;" class="list">
-      <h1 id="myHeading" style="margin-top:80px;">JavaScript and the DOM</h1>
-      <p>Making a web page interactive</p>    
-      <button id="toggleList">hide list!</button>
-      <div class="list">
-        <p class="description">Things that are purple:</p>
-        <ul>
-          <li style="width:400px;">grapes</li>
-          <li style="width:400px;">amethyst</li>
-          <li style="width:400px;">lavender</li>
-          <li style="width:400px;">plums</li>
-        </ul>
-        <input type="text" class="input_value">
-        <button class="add_item">add item</button>
+        <a class="link" href="checkbox.html">Checkbox</a>
       </div>
     </div>
-    <script src="js/pageContent.js"></script>
+    <div class="page_content">
+      <form id="input_name">
+        <input class="input_person" type="text" placeholder="Enter Name">
+        <button class="submit">Submit</button>
+      </form>
+      <div class="people_container">
+        <h1>Invitees</h1>
+        <div class="people_list">
+          <ul id="invitedList">
+
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+
+    <script src="js/invitePage.js"></script>
   </body>
 </html>
