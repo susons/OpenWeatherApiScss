@@ -80,41 +80,21 @@ const init = result => {
   switch (result.list[0].weather[0].main) {
     case 'Clear':
       document.body.style.backgroundImage = 'url("assets/clear.jpg")';
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundPosition = 'center center';
       break;
-
     case 'Clouds':
       document.body.style.backgroundImage = "url('assets/clouds.jpg')";
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundPosition = 'center center';
       break;
-
     case 'Rain':
     case 'Drizzle':
     case 'Mist':
       document.body.style.backgroundImage = "url('assets/rain.jpg')";
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundPosition = 'center center';
       break;
-
     case 'Thunderstorm':
       document.body.style.backgroundImage = "url('assets/storm.jpg')";
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundPosition = 'center center';
       break;
-
     case 'Snow':
       document.body.style.backgroundImage = "url('assets/snow.jpg')";
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundRepeat = 'no-repeat';
-      document.body.style.backgroundPosition = 'center center';
       break;
-
     default:
       break;
   }
